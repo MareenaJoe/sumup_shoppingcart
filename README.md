@@ -1,10 +1,24 @@
-# sumupshopping
+# Sumup Shopping cart application
+
 
 Shopping app and checkout using sumup
 
-## Getting Started
+## About flutter and some documentation on getting started with flutter
 
-This project is a starting point for a Flutter application.
+This is done as part of my H.Dip Semester 2 project.
+
+An application that will interact with SumUp’s “Air” bluetooth device chip & pin payment device to accept payments.
+This application allows you to select an event name and can start adding items that are listing under that particular event to the shopping cart.
+Complete the purchase by pressing checkout and then tap the card.
+
+Sample REST web service can be found in this link: https://github.com/MareenaJoe/sumup_rest_webservice
+
+Prerequisites
+
+- Registered for a merchant account via SumUp's country websites (or received a test account).
+- Received SumUp card terminal: Air or Air Lite
+- Requested an Affiliate (Access) Key via SumUp Dashboard for Developers.
+
 
 A few resources to get you started if this is your first Flutter project:
 
