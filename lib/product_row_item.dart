@@ -1,22 +1,8 @@
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:sumupshopping/model/sale_Item.dart';
 
 import 'model/app_state_model.dart';
-import 'model/product.dart';
 import 'styles.dart';
 
 class ProductRowItem extends StatelessWidget {
@@ -26,7 +12,7 @@ class ProductRowItem extends StatelessWidget {
                          this.lastItem,
                        });
 
-  final Product product;
+  final SaleItem product;
   final int index;
   final bool lastItem;
 
@@ -46,8 +32,7 @@ class ProductRowItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(4),
             child: Image.asset(
-              product.assetName,
-              package: product.assetPackage,
+              product.name,
               fit: BoxFit.cover,
               width: 76,
               height: 76,
@@ -77,7 +62,7 @@ class ProductRowItem extends StatelessWidget {
             padding: EdgeInsets.zero,
             onPressed: () {
               final model = Provider.of<AppStateModel>(context);
-              model.addProductToCart(product.id);
+              model.addProductToCart(product);
             },
             child: const Icon(
               CupertinoIcons.plus_circled,

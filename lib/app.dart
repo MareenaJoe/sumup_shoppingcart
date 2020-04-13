@@ -13,8 +13,9 @@
 // limitations under the License.
 
 import 'package:flutter/cupertino.dart';
+import 'events_list_tab.dart';
 import 'product_list_tab.dart';
-import 'search_tab.dart';
+import 'product_list_tab.dart';
 import 'shopping_cart_tab.dart';
 
 class EventStoreApp extends StatelessWidget {
@@ -34,11 +35,11 @@ class CupertinoStoreHomePage extends StatelessWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
-            title: Text('Products'),
+            title: Text('Events'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.search),
-            title: Text('Search'),
+            icon: Icon(CupertinoIcons.book),
+            title: Text('Product'),
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.shopping_cart),
@@ -52,14 +53,14 @@ class CupertinoStoreHomePage extends StatelessWidget {
           case 0:
             returnValue = CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
-                child: ProductListTab(),
+                child: EventListTab(),
               );
             });
             break;
           case 1:
             returnValue = CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
-                child: SearchTab(),
+                child: ProductListTab(),
               );
             });
             break;

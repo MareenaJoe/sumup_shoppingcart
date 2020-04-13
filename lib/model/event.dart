@@ -1,14 +1,17 @@
+
+import 'sale_Item.dart';
+
 class Event{
   String eventID;
   String eventTitle;
   String eventContent;
-  List<String> saleItemList;
+  List<SaleItem> saleItemList;
   DateTime createDateTime;
 
   Event({this.eventID, this.eventTitle, this.saleItemList, this.eventContent,this.createDateTime });
 
   factory Event.fromJson(Map<String, dynamic> item){
-    Event event = new Event(
+    Event event = Event(
         eventID: item['eventID'],
         eventTitle: item['eventTitle'],
         eventContent: item['eventContent'],
@@ -19,9 +22,9 @@ class Event{
   }
 
   void setSaleItemsList(dynamicItem) {
-    List<String> tmpSaleItemsList = <String>[];
-    for (String item in dynamicItem){
-      tmpSaleItemsList.add(item);
+    List<SaleItem> tmpSaleItemsList = <SaleItem>[];
+    for (var item in dynamicItem){
+      tmpSaleItemsList.add(SaleItem.fromJson(item));
     }
     saleItemList = tmpSaleItemsList;
   }
@@ -30,6 +33,4 @@ class Event{
   String toString() {
     return 'Event{eventID: $eventID, eventTitle: $eventTitle, eventContent: $eventContent, saleItemList: $saleItemList, createDateTime: $createDateTime}';
   }
-
-
 }
