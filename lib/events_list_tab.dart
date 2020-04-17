@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'model/app_state_model.dart';
 import 'event_row_item.dart';
 
 class EventListTab extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    print ("EventListTab: Building EventListTab");
     return Consumer<AppStateModel>(
       builder: (context, model, child) {
         final events = model.getEvents();
@@ -27,6 +30,7 @@ class EventListTab extends StatelessWidget {
                         index: index,
                         event: events[index],
                         lastItem: index == events.length - 1,
+                        colour: model.getCurrentSelectedEvent().eventID ==  events[index].eventID ? Colors.blue : Colors.white ,
                       );
                     }
 

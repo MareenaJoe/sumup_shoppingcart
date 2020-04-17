@@ -34,8 +34,6 @@ class AppStateModel extends foundation.ChangeNotifier {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     await SumupFlutter.authenticate("221a8f9e-627f-493e-90be-ce3648f83789");
     await SumupFlutter.presentLoginView();
   }
@@ -90,13 +88,29 @@ class AppStateModel extends foundation.ChangeNotifier {
     notifyListeners();
   }
 
+  //Remove a product from cart
+  void removeProductFromCart(SaleItem item){
+    CartItem removeItem = _productsInCart[item.id];
+    if (removeItem != null){
+      removeItem.decrementCount();
+      if (removeItem.currentCount == 0){
+        _productsInCart.remove(item.id);
+      }
+      return;
+    }
+    notifyListeners();
+
+  }
+
+
   // Removes everything from the cart.
   void clearCart() {
     _productsInCart.clear();
     notifyListeners();
   }
 
-  void currentSelectedEvent(Event event) {
+  void setCurrentSelectedEvent(Event event) {
+    print ("Selected event: "+ event.toString());
     _currentEvent = event;
     notifyListeners();
   }
@@ -108,6 +122,9 @@ class AppStateModel extends foundation.ChangeNotifier {
     return _currentEvent.saleItemList;
   }
 
+  Event getCurrentSelectedEvent(){
+    return _currentEvent;
+  }
 
 
 }

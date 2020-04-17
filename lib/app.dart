@@ -15,7 +15,6 @@
 import 'package:flutter/cupertino.dart';
 import 'events_list_tab.dart';
 import 'product_list_tab.dart';
-import 'product_list_tab.dart';
 import 'shopping_cart_tab.dart';
 
 class EventStoreApp extends StatelessWidget {
@@ -38,7 +37,7 @@ class CupertinoStoreHomePage extends StatelessWidget {
             title: Text('Events'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.book),
+            icon: Icon(CupertinoIcons.check_mark_circled_solid),
             title: Text('Product'),
           ),
           BottomNavigationBarItem(
@@ -51,6 +50,7 @@ class CupertinoStoreHomePage extends StatelessWidget {
         CupertinoTabView returnValue;
         switch (index) {
           case 0:
+            print("Build Event List");
             returnValue = CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                 child: EventListTab(),
@@ -58,6 +58,7 @@ class CupertinoStoreHomePage extends StatelessWidget {
             });
             break;
           case 1:
+            print("Build Filtered Product List");
             returnValue = CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                 child: ProductListTab(),
@@ -65,6 +66,7 @@ class CupertinoStoreHomePage extends StatelessWidget {
             });
             break;
           case 2:
+            print("Build Cart");
             returnValue = CupertinoTabView(builder: (context) {
               return CupertinoPageScaffold(
                 child: ShoppingCartTab(),

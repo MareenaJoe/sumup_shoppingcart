@@ -8,6 +8,7 @@ import 'product_row_item.dart';
 class ProductListTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print ("ProductListTab: Building ProductListTab");
     return Consumer<AppStateModel>(
       builder: (context, model, child) {
         List<SaleItem> products = model.getProductsBySelectedEvent();

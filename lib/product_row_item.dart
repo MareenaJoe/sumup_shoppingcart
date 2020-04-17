@@ -69,6 +69,17 @@ class ProductRowItem extends StatelessWidget {
               semanticLabel: 'Add',
             ),
           ),
+          CupertinoButton(
+            padding: EdgeInsets.zero,
+            onPressed: () {
+              final model = Provider.of<AppStateModel>(context);
+              model.removeProductFromCart(product);
+            },
+            child: const Icon(
+              CupertinoIcons.minus_circled,
+              semanticLabel: 'Minus',
+            ),
+          ),
         ],
       ),
     );

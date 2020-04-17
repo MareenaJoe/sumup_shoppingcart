@@ -1,7 +1,7 @@
 import 'package:sumupshopping/model/sale_Item.dart';
 
 class CartItem extends SaleItem {
-  int countAdded = 0;
+  int currentCount = 0;
   double totalPrice = 0;
 
   CartItem(SaleItem saleItem){
@@ -12,7 +12,14 @@ class CartItem extends SaleItem {
   }
 
   void incrementCount(){
-    countAdded += 1;
-    totalPrice = (price * countAdded);
+    currentCount += 1;
+    totalPrice = (price * currentCount);
+  }
+
+  void decrementCount(){
+    if (currentCount > 0){
+      currentCount -= 1;
+    }
+    totalPrice = (price * currentCount);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'model/app_state_model.dart';
@@ -7,14 +8,16 @@ import 'styles.dart';
 
 class EventRowItem extends StatelessWidget {
   const EventRowItem({
-                         this.index,
-                         this.event,
-                         this.lastItem,
+                       this.index,
+                       this.event,
+                       this.lastItem,
+                       this.colour,
                        });
 
   final Event event;
   final int index;
   final bool lastItem;
+  final colour;
 
   @override
   Widget build(BuildContext context) {
@@ -47,13 +50,15 @@ class EventRowItem extends StatelessWidget {
           ),
           CupertinoButton(
             padding: EdgeInsets.zero,
+            color: colour,
             onPressed: () {
               final model = Provider.of<AppStateModel>(context);
-              model.currentSelectedEvent(event);
+              model.setCurrentSelectedEvent(event);
             },
             child: const Icon(
               CupertinoIcons.check_mark_circled,
               semanticLabel: 'Select',
+              color: Colors.black,
             ),
           ),
         ],
